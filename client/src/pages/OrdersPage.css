@@ -1,0 +1,59 @@
+.orders-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.order-card { padding: 1.25rem; }
+.order-card__header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.order-id   { font-size: 0.95rem; font-weight: 700; font-family: monospace; letter-spacing: 0.05em; }
+.order-date { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+/* Progress bar */
+.order-progress {
+  display: flex; align-items: center;
+  margin-bottom: 1rem; overflow: hidden;
+}
+.progress-step {
+  display: flex; align-items: center; flex: 1;
+  font-size: 0.72rem; color: var(--text-muted); position: relative;
+  flex-direction: column; text-align: center; gap: 4px;
+}
+.progress-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--bg-primary);
+  transition: var(--transition);
+}
+.progress-step.active .progress-dot { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.progress-step.active span          { color: var(--text-primary); font-weight: 600; }
+.progress-line {
+  position: absolute;
+  left: 50%; right: -50%; top: 5px;
+  height: 2px; background: var(--border);
+  z-index: -1;
+}
+.progress-line.filled { background: var(--accent); }
+
+.order-items-preview {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.order-item-thumb {
+  width: 48px; height: 48px;
+  object-fit: cover; border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+.more-items {
+  width: 48px; height: 48px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; color: var(--text-muted); font-weight: 600;
+}
+.order-items-info {
+  margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+  font-size: 0.85rem; color: var(--text-secondary);
+}
+.order-items-info strong { font-size: 1rem; color: var(--text-primary); }
+
+.order-card__footer { display: flex; align-items: center; justify-content: space-between; }
+.tracking { font-size: 0.8rem; color: var(--text-secondary); }
