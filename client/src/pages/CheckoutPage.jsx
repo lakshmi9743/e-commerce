@@ -18,7 +18,7 @@ export default function CheckoutPage() {
     paymentMethod: 'Credit Card',
   });
 
-  const shipping  = total > 100 ? 0 : 9.99;
+  const shipping  = total > 5000 ? 0 : 499;
   const tax       = parseFloat((total * 0.08).toFixed(2));
   const grandTotal= parseFloat((total + shipping + tax).toFixed(2));
 
@@ -125,7 +125,7 @@ export default function CheckoutPage() {
                     <div key={i._id} className="review-item">
                       <img src={i.image} alt={i.name} />
                       <div><div className="ri-name">{i.name}</div><div className="ri-meta">x{i.quantity}</div></div>
-                      <span className="ri-price">${(i.price * i.quantity).toFixed(2)}</span>
+                      <span className="ri-price">₹{(i.price * i.quantity).toFixed(2)}</span>
                     </div>
                   ))}
                 </div>
@@ -137,7 +137,7 @@ export default function CheckoutPage() {
                 <div style={{display:'flex',gap:'0.75rem',marginTop:'1.5rem'}}>
                   <button type="button" className="btn btn-ghost btn-lg" onClick={() => setStep(1)} id="back-to-payment">← Back</button>
                   <button id="place-order-btn" className="btn btn-primary btn-lg" style={{flex:1}} onClick={placeOrder} disabled={loading}>
-                    {loading ? 'Placing Order...' : `Place Order — $${grandTotal}`}
+                    {loading ? 'Placing Order...' : `Place Order — ₹${grandTotal}`}
                   </button>
                 </div>
               </div>
@@ -151,16 +151,16 @@ export default function CheckoutPage() {
               {items.map(i => (
                 <div key={i._id} className="s-item">
                   <span>{i.name} ×{i.quantity}</span>
-                  <span>${(i.price * i.quantity).toFixed(2)}</span>
+                  <span>₹{(i.price * i.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
             <div className="divider" />
-            <div className="s-item"><span>Subtotal</span><span>${total.toFixed(2)}</span></div>
-            <div className="s-item"><span>Shipping</span><span>{shipping === 0 ? 'FREE' : `$${shipping}`}</span></div>
-            <div className="s-item"><span>Tax</span><span>${tax}</span></div>
+            <div className="s-item"><span>Subtotal</span><span>₹{total.toFixed(2)}</span></div>
+            <div className="s-item"><span>Shipping</span><span>{shipping === 0 ? 'FREE' : `₹${shipping}`}</span></div>
+            <div className="s-item"><span>Tax</span><span>₹{tax}</span></div>
             <div className="divider" />
-            <div className="s-item s-total"><span>Total</span><span>${grandTotal}</span></div>
+            <div className="s-item s-total"><span>Total</span><span>₹{grandTotal}</span></div>
           </div>
         </div>
       </div>

@@ -83,18 +83,18 @@ export default function OrderDetailPage() {
                 <img src={item.image} alt={item.name} className="od-item__image" />
                 <div className="od-item__info">
                   <Link to={`/products/${item.product}`} className="od-item__name">{item.name}</Link>
-                  <span className="od-item__meta">Qty: {item.quantity} × ${item.price.toFixed(2)}</span>
+                  <span className="od-item__meta">Qty: {item.quantity} × ₹{item.price.toFixed(2)}</span>
                 </div>
-                <span className="od-item__total">${(item.price * item.quantity).toFixed(2)}</span>
+                <span className="od-item__total">₹{(item.price * item.quantity).toFixed(2)}</span>
               </div>
             ))}
 
             <div className="divider" />
             <div className="od-price-breakdown">
-              <div className="price-row"><span>Subtotal</span><span>${order.itemsPrice.toFixed(2)}</span></div>
-              <div className="price-row"><span>Shipping</span><span>{order.shippingPrice === 0 ? 'FREE' : `$${order.shippingPrice.toFixed(2)}`}</span></div>
-              <div className="price-row"><span>Tax</span><span>${order.taxPrice.toFixed(2)}</span></div>
-              <div className="price-row price-total"><span>Total</span><span>${order.totalPrice.toFixed(2)}</span></div>
+              <div className="price-row"><span>Subtotal</span><span>₹{order.itemsPrice.toFixed(2)}</span></div>
+              <div className="price-row"><span>Shipping</span><span>{order.shippingPrice === 0 ? 'FREE' : `₹${order.shippingPrice.toFixed(2)}`}</span></div>
+              <div className="price-row"><span>Tax</span><span>₹{order.taxPrice.toFixed(2)}</span></div>
+              <div className="price-row price-total"><span>Total</span><span>₹{order.totalPrice.toFixed(2)}</span></div>
             </div>
           </div>
 

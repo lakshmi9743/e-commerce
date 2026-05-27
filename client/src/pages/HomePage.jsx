@@ -6,7 +6,7 @@ import ProductCard from '../components/ProductCard';
 import './HomePage.css';
 
 const features = [
-  { icon: <FiTruck />,      title: 'Free Shipping',   desc: 'On orders over $100' },
+  { icon: <FiTruck />,      title: 'Free Shipping',   desc: 'On orders over ₹5,000' },
   { icon: <FiShield />,     title: 'Secure Payment',  desc: '100% protected checkout' },
   { icon: <FiRefreshCw />,  title: 'Easy Returns',    desc: '30-day hassle-free returns' },
   { icon: <FiShoppingBag />,title: 'Best Deals',      desc: 'Curated daily offers' },

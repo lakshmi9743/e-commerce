@@ -74,7 +74,7 @@ export default function OrdersPage() {
                 {order.items.length > 3 && <div className="more-items">+{order.items.length - 3}</div>}
                 <div className="order-items-info">
                   <span>{order.items.reduce((s, i) => s + i.quantity, 0)} item(s)</span>
-                  <strong>${order.totalPrice.toFixed(2)}</strong>
+                  <strong>₹{order.totalPrice.toFixed(2)}</strong>
                 </div>
               </div>
 

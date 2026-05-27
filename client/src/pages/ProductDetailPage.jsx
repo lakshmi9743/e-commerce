@@ -75,7 +75,7 @@ export default function ProductDetailPage() {
               <span className="rating-val">{product.rating.toFixed(1)}</span>
               <span className="rating-count">({product.numReviews} reviews)</span>
             </div>
-            <div className="product-detail__price">${product.price.toFixed(2)}</div>
+            <div className="product-detail__price">₹{product.price.toFixed(2)}</div>
             <p className="product-detail__desc">{product.description}</p>
 
             <div className="product-detail__meta-grid">
@@ -104,7 +104,7 @@ export default function ProductDetailPage() {
             </button>
 
             <div className="product-detail__trust">
-              <div className="trust-item"><FiTruck /><span>Free shipping on orders over $100</span></div>
+              <div className="trust-item"><FiTruck /><span>Free shipping on orders over ₹5,000</span></div>
               <div className="trust-item"><FiShield /><span>Secure 256-bit SSL checkout</span></div>
               <div className="trust-item"><FiPackage /><span>30-day hassle-free returns</span></div>
             </div>

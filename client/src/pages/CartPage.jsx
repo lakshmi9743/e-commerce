@@ -9,7 +9,7 @@ export default function CartPage() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const shipping = total > 100 ? 0 : 9.99;
+  const shipping = total > 5000 ? 0 : 499;
   const tax      = parseFloat((total * 0.08).toFixed(2));
   const grandTotal = parseFloat((total + shipping + tax).toFixed(2));
 
@@ -45,14 +45,14 @@ export default function CartPage() {
                 <div className="cart-item__info">
                   <Link to={`/products/${item._id}`} className="cart-item__name">{item.name}</Link>
                   <span className="cart-item__category">{item.category}</span>
-                  <span className="cart-item__price">${item.price.toFixed(2)}</span>
+                  <span className="cart-item__price">₹{item.price.toFixed(2)}</span>
                 </div>
                 <div className="cart-item__controls">
                   <button id={`dec-${item._id}`} onClick={() => updateQty(item._id, item.quantity - 1)} disabled={item.quantity <= 1}><FiMinus /></button>
                   <span className="cart-item__qty">{item.quantity}</span>
                   <button id={`inc-${item._id}`} onClick={() => updateQty(item._id, item.quantity + 1)} disabled={item.quantity >= item.stock}><FiPlus /></button>
                 </div>
-                <div className="cart-item__subtotal">${(item.price * item.quantity).toFixed(2)}</div>
+                <div className="cart-item__subtotal">₹{(item.price * item.quantity).toFixed(2)}</div>
                 <button className="cart-item__remove" id={`remove-${item._id}`} onClick={() => removeFromCart(item._id)}><FiTrash2 /></button>
               </div>
             ))}
@@ -61,12 +61,12 @@ export default function CartPage() {
           {/* Summary */}
           <div className="cart-summary card">
             <h2 className="cart-summary__title">Order Summary</h2>
-            <div className="summary-row"><span>Subtotal ({items.reduce((s,i) => s+i.quantity, 0)} items)</span><span>${total.toFixed(2)}</span></div>
-            <div className="summary-row"><span>Shipping</span><span>{shipping === 0 ? <span className="free-ship">FREE</span> : `$${shipping.toFixed(2)}`}</span></div>
-            {shipping > 0 && <p className="free-ship-hint">Add ${(100 - total).toFixed(2)} more for free shipping</p>}
-            <div className="summary-row"><span>Tax (8%)</span><span>${tax}</span></div>
+            <div className="summary-row"><span>Subtotal ({items.reduce((s,i) => s+i.quantity, 0)} items)</span><span>₹{total.toFixed(2)}</span></div>
+            <div className="summary-row"><span>Shipping</span><span>{shipping === 0 ? <span className="free-ship">FREE</span> : `₹${shipping.toFixed(2)}`}</span></div>
+            {shipping > 0 && <p className="free-ship-hint">Add ₹{(5000 - total).toFixed(2)} more for free shipping</p>}
+            <div className="summary-row"><span>Tax (8%)</span><span>₹{tax}</span></div>
             <div className="divider" />
-            <div className="summary-row summary-total"><span>Total</span><span>${grandTotal}</span></div>
+            <div className="summary-row summary-total"><span>Total</span><span>₹{grandTotal}</span></div>
 
             {user ? (
               <button className="btn btn-primary btn-lg btn-full" id="checkout-btn" onClick={() => navigate('/checkout')}>

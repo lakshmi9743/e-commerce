@@ -80,7 +80,7 @@ export default function AdminDashboard() {
   if (loading) return <div className="spinner-wrap"><div className="spinner" /></div>;
 
   const statCards = [
-    { label: 'Total Revenue',  value: `$${(stats?.totalRevenue || 0).toFixed(2)}`, icon: <FiDollarSign />, color: 'var(--success)' },
+    { label: 'Total Revenue',  value: `₹${(stats?.totalRevenue || 0).toFixed(2)}`, icon: <FiDollarSign />, color: 'var(--success)' },
     { label: 'Total Orders',   value: stats?.totalOrders || 0,                     icon: <FiPackage />,    color: 'var(--accent-light)' },
     { label: 'Products',       value: products.length,                             icon: <FiShoppingBag />,color: 'var(--gold)' },
     { label: 'Customers',      value: '—',                                         icon: <FiUsers />,      color: 'var(--info)' },
@@ -127,7 +127,7 @@ export default function AdminDashboard() {
                   <div key={o._id} className="mini-order-row">
                     <span className="mono">#{o._id.slice(-6).toUpperCase()}</span>
                     <span>{o.user?.name}</span>
-                    <span>${o.totalPrice.toFixed(2)}</span>
+                    <span>₹{o.totalPrice.toFixed(2)}</span>
                     <span className={`badge badge-${o.status}`}>{o.status}</span>
                   </div>
                 ))}
@@ -168,7 +168,7 @@ export default function AdminDashboard() {
                       <td><img src={p.image} alt={p.name} className="table-img" /></td>
                       <td className="product-name-cell">{p.name}</td>
                       <td><span className="badge badge-processing">{p.category}</span></td>
-                      <td className="bold">${p.price.toFixed(2)}</td>
+                      <td className="bold">₹{p.price.toFixed(2)}</td>
                       <td><span style={{ color: p.stock < 5 ? 'var(--danger)' : 'var(--success)' }}>{p.stock}</span></td>
                       <td>⭐ {p.rating.toFixed(1)}</td>
                       <td>
@@ -200,7 +200,7 @@ export default function AdminDashboard() {
                       <td className="mono">#{o._id.slice(-8).toUpperCase()}</td>
                       <td>{o.user?.name}<br/><small style={{color:'var(--text-muted)'}}>{o.user?.email}</small></td>
                       <td>{new Date(o.createdAt).toLocaleDateString()}</td>
-                      <td className="bold">${o.totalPrice.toFixed(2)}</td>
+                      <td className="bold">₹{o.totalPrice.toFixed(2)}</td>
                       <td><span className={`badge badge-${o.status}`}>{o.status}</span></td>
                       <td>
                         <select
@@ -236,7 +236,7 @@ export default function AdminDashboard() {
               </div>
               <div className="form-group"><label className="form-label">Description</label><textarea id="prod-desc" className="form-input" rows={2} value={form.description} onChange={e=>set('description',e.target.value)} required /></div>
               <div className="form-row-3">
-                <div className="form-group"><label className="form-label">Price ($)</label><input id="prod-price" type="number" step="0.01" min="0" className="form-input" value={form.price} onChange={e=>set('price',e.target.value)} required /></div>
+                <div className="form-group"><label className="form-label">Price (₹)</label><input id="prod-price" type="number" step="0.01" min="0" className="form-input" value={form.price} onChange={e=>set('price',e.target.value)} required /></div>
                 <div className="form-group"><label className="form-label">Stock</label><input id="prod-stock" type="number" min="0" className="form-input" value={form.stock} onChange={e=>set('stock',e.target.value)} required /></div>
                 <div className="form-group"><label className="form-label">Category</label>
                   <select id="prod-category" className="form-input" value={form.category} onChange={e=>set('category',e.target.value)}>
