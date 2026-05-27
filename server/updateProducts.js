@@ -17,7 +17,7 @@ const updates = [
   { name: 'The Art of Clean Code',                price: 2499 },
   { name: 'Ceramic Coffee Mug Set',               price: 2999 },
   { name: 'Running Shoes Ultra',                  price: 12999 },
-  { name: 'Vitamin C Serum',                      price: 2499, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80' },
+  { name: 'Vitamin C Serum',                      price: 2499, image: '/vitamin_c_serum.png' },
   { name: '4K Webcam Pro',                        price: 6999 },
   { name: 'Lego Architecture Set',                price: 6999 },
 ];
